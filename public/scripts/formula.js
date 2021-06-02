@@ -8,9 +8,7 @@ import {loadCurrentSheet} from './sheets.js'
 addEvent('blur', '.formula-bar > div', function(e) {
     let eleClass = jQuery(e.currentTarget).attr('class').split(' ')[1];
     if(eleClass === 'cell-address') {   
-        console.log('cell address hit');
     } else if(eleClass === 'formula-sign') {
-        console.log('cell formula hit');
     } else if(eleClass === 'formula-tab') {
         implementFormula(e.currentTarget);
     }
@@ -32,7 +30,7 @@ function implementFormula(ele) {
                 }
             }
         }
-        console.log(items);
+
         jQuery('.cell-col-selected').each(function(idx, cell) {
             if(updateStreams(cell, items, false)) {
                 let [rowId, colId] = getRowNColID(cell);
@@ -57,7 +55,6 @@ export function updateStreams(cell, arr, update, oldUpStream) {
     
     // check if the ele is itself present
     if(arr.includes(selfCode)) {
-        console.log(selfCode);
         return false;
     }
     
@@ -145,7 +142,6 @@ export function evalFormula(code) {
     let [rowId, colId] = codeToValue(code);
     if(data[selectedSheet][rowId] && data[selectedSheet][rowId][colId]) {
         let formula = data[selectedSheet][rowId][colId].formula;
-        console.log('line 144' + formula);
         if(formula != '') {
             let upStream = data[selectedSheet][rowId][colId].upStream;
             let upStreamVals = [];
@@ -158,7 +154,6 @@ export function evalFormula(code) {
                     value = data[selectedSheet][dr][dc].text;
                 }
                 upStreamVals.push(value);
-                console.log('line 157'+ upStreamVals);
                 formula = formula.replace(upStream[i], upStreamVals[i]);
             }
             // in built function eval 
