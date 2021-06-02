@@ -3,7 +3,7 @@ const app = express();
 const httpServer = require('http').createServer(app);
 app.use(express.static('public'));
 
-const port = Process.env.PORT || 3000;
-app.listen(port, function() {
-    console.log("Server is on " + port);
-});
+let port = process.env.PORT || 3000;
+httpServer.listen(port,function(){
+    console.log("server is listening to request at port " + port);
+})
