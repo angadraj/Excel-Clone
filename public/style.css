@@ -1,0 +1,489 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    color: #000000;
+    height: 100vh;
+    width: 100vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+}
+
+.title {
+    background-color: #217346;
+    padding: 5px;
+    text-align: center;
+    color: #fff;
+}  
+
+/* menu bar */
+
+.menu-bar {
+    display: flex;
+    align-items: center;
+    background-color: #217346;
+}
+
+.menu-bar-item {
+    color: #fff;
+    background-color: #217346;
+    padding: 3px 10px;
+}
+
+.menu-bar-item:hover {
+    background-color: #055c1c;
+    cursor: pointer;
+}
+
+.menu-bar-item-selected, 
+.menu-bar-item-selected:hover {
+    background-color: #fff;
+    color: #217346;
+}
+
+/* manu-icon-bar-wrap */
+
+.menu-icon-bar-wrap {
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.menu-icon-item {
+    padding: 3px 10px;
+}
+
+.menu-icon-item:hover {
+    background-color: #e4e4e4;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* alignment, font-style */
+
+.selected-align,
+.selected-font-style,
+.selected-align:hover,
+.selected-font-style:hover {
+    background-color: #bbbbbb;
+    border-radius: 4px;
+}
+
+/* font size and font style options */
+
+.font-size-selector, 
+.font-style-selector {
+    padding: 3px 5px;
+    margin: 0 10px;
+    outline: none;
+}
+
+.font-size-selector {
+    font-size: 14px;
+}
+
+.font-style-selector {
+    font-family: Noto Sans;
+}
+
+/* color picker */
+
+#colorPick {
+    display: flex;
+    flex-wrap: wrap;
+    top: 40px !important;
+    left: -50px !important;
+    background-color: #fff;
+}
+
+#colorPick > span {
+    width: 100%;
+}
+
+/* formula bar */
+
+.formula-bar {
+    display: flex;
+    align-items: center;
+    padding: 3px 10px;
+    justify-content: space-around;
+    background-color: #e4e4e4;
+}
+
+.formula-bar-item {
+    padding: 0 10px; 
+    margin: 0;
+    text-align: center;
+    outline: none;
+    background-color: #fff;
+}
+
+.cell-address {
+    width: 10%;
+}
+
+.formula-sign {
+    width: 5%;
+}
+
+.formula-tab {
+    width: 80%;
+}
+
+/* data container */
+
+.data-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: calc(100vh - 150px);
+}
+
+.select-all-cell {
+    width: 25px;
+    height: 25px;
+    border: 0;
+}
+
+.cols {
+    width: calc(100vw - 25px);
+    height: 25px;
+    border-left : 1px solid #e4e4e4;
+    display: flex;
+    overflow: hidden;    
+}
+
+.rows {
+    width: 25px;
+    height: calc(100vh - 175px);
+    border-top: 1px solid #e4e4e4;
+    overflow: hidden;
+}
+
+.cells {
+    width: calc(100vw - 25px);
+    height: calc(100vh - 175px);
+    overflow: hidden;
+    position: relative;
+}
+
+.col-item, 
+.row-item {
+    border-right: 1px solid #e2e2e2;
+    border-bottom: 1px solid #e2e2e2;
+    font-weight: 500;
+    text-align: center;
+}
+
+.col-item {
+    min-width: 70px;
+}
+
+.row-item {
+    width: 100%;
+    min-height: 25px;
+}
+
+.cell-row {
+    display: flex;
+    align-items: center;
+}
+
+.cell-col {
+    min-width: 70px;
+    width:  70px;
+    min-height: 25px;
+    height: 25px;
+    border-bottom: 1px solid #e2e2e2;
+    border-right: 1px solid #e2e2e2;
+    outline: none;
+    font-size: 14px;
+    padding: 2px;
+    overflow: hidden;
+}
+
+.cell-col-selected {
+    border: 2px solid #217346;
+}
+
+/* select cell css */
+
+.cell-col.top-selected {
+    border-top: none;
+}
+
+.cell-col.bottom-selected {
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.cell-col.right-selected {
+    border-right: 1px solid #e2e2e2;
+}
+
+.cell-col.left-selected {
+    border-left: none;
+}
+
+/* sheet section */
+
+.sheet-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.sheet-scroller {
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.right-scroller:hover,
+.left-scroller:hover {
+    background-color: #e2e2e2;
+}
+
+.add-sheet {
+    margin: 0 10px;
+}
+
+.add-sheet:hover {
+    transform: scale(1.2);
+}
+
+.sheet-tab-container {
+    display: flex;
+    align-items: center;
+    border-left: #e4e4e4;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.sheet-tab-container::-webkit-scrollbar {
+    display: none;
+}
+
+.sheet-tab {
+    margin: 0 5px;
+    border-right: #e4e4e4;
+    font-weight: 600;
+    padding: 0 10px;
+}
+
+.sheet-tab:hover {
+    background-color: #e4e4e4;
+}
+
+.sheet-selected,
+.sheet-selected:hover {
+    background-color: #bbbbbb;
+}
+
+.sheet-modal {
+    position: absolute;
+    box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
+    bottom: 40px;
+    background-color: rgb(241, 241, 241);
+    border-radius: 4px;
+    flex-direction: column;
+    justify-content: center;
+    display: none;
+    cursor: pointer;
+}
+
+.modal-open {
+    display: flex;
+}
+
+.rename, 
+.delete {
+    font-weight: 600;
+    font-size: 15px;
+    padding: 10px 25px;
+    color: #217346;
+}
+
+.rename:hover,
+.delete:hover {
+    background-color: #d4d4d4;
+}
+
+/* delete and rename modals */
+.delete-rename-modal {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    display: none;
+}
+
+.delete-modal, 
+.rename-modal,
+.save-changes-modal {
+    display: block;
+    background-color: #eeeeee;
+    box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.delete-modal,
+.rename-modal,
+.save-changes-modal {
+    display: none;
+}
+
+.delete-rename-modal p{
+    margin: 0;
+    color: #217346;
+    font-weight: 600;
+    text-align: center;
+}
+
+.rename-modal input {
+    padding: 5px 10px;
+    width: 100%;
+    outline: none;
+    border: 1px solid #217346;
+    min-height: 35px;
+    margin: 15px auto;
+    border-radius: 100px;
+}
+
+.delete-rename-modal .ctas {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.delete-modal .ctas {
+    margin: 15px auto;
+}
+
+.save-changes-modal .ctas {
+    margin-top: 20px;
+}
+
+.delete-rename-modal .cancel-btn, 
+.delete-rename-modal .ok-btn {
+    color: #217346;
+    font-weight: 600;
+    padding: 10px 40px;
+    background-color: #fff;
+    border-radius: 100px;
+    box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
+}
+
+.delete-rename-modal .cancel-btn:hover, 
+.delete-rename-modal .ok-btn:hover {
+    color: #fff;
+    background-color: #217346;
+}
+
+.delete-rename-modal .cancel-btn {
+    margin-right: 5px;
+}
+
+.delete-rename-modal .ok-btn {
+    margin-left: 5px;
+}
+
+/* open and show modal classes */
+.show-del-ren-modal {
+    display: block;
+}
+
+.show-rename,
+.show-delete,
+.show-save-changes {
+    display: block;
+}
+
+/* file modal */
+.file-modal {
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+.show-file-modal {
+    display: block;
+}
+
+.file-content {
+    width: 0;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.file-content .left-section,
+.file-content .right-section {
+    padding: 30px 20px;
+    height: 100%;
+}
+
+.file-content .right-section {
+    width: 80%;
+    background-color: #fcfcfc; 
+}
+
+.file-content .left-section {
+    background-color: #eeeeee;
+    width: 20%;
+}
+
+.file-content .left-section ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.file-content .left-section ul .file-options {
+    padding: 5px 13px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #217346;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.file-content .left-section ul .file-options[type="close"] {
+    margin-bottom: 25px;
+}
+
+.file-content .left-section ul li:hover {
+    background-color: #217346;
+    color: #fff;
+}

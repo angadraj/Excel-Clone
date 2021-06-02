@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./src/colorPick.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="./src/colorPick.js"></script>
+
+    <link rel="stylesheet" href="./perfect-scrollbar.css">
+
+    <script src="./scripts/perfect-scrollbar.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Excel Clone</title>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="title">Excel Clone</div>
+        <!-- menu bar -->
+        <div class="menu-bar">
+            <div class="menu-bar-item file">File</div>
+            <div class="menu-bar-item menu-bar-item-selected home">Home</div>
+            <div class="menu-bar-item insert">Insert</div>
+            <div class="menu-bar-item page-layout">Page Layout</div>
+            <div class="menu-bar-item view">View</div>
+        </div>
+        <!-- icon bar -->
+        <div class="menu-icon-bar-wrap">
+            <div class="menu-icon-bar">
+
+                <!-- cut copy paste -->
+
+                <div class="menu-icon-item material-icons cut">content_cut</div>
+                <div class="menu-icon-item material-icons copy">content_copy</div>
+                <div class="menu-icon-item material-icons paste">content_paste</div>
+
+                <!-- font and style selectors -->
+                <select class="font-size-selector" value="14">
+                    <option value="4">4</option>
+                    <option value="12">12</option>
+                    <option value="14" selected>14</option>
+                    <option value="16">16</option>
+                    <option value="20">20</option>
+                    <option value="24">24</option>
+                    <option value="32">32</option>
+                    <option value="40">40</option>
+                    <option value="42">42</option>
+                    <option value="50">50</option>
+                </select>
+                <select class="font-style-selector" value="Noto Sans">
+                    <option style="font-family:Noto Sans" value="Noto Sans">Noto Sans</option>
+                    <option style="font-family:Arial" value="Arial">Arial</option>
+                    <option style="font-family:Calibri" value="Calibri">Calibri</option>
+                    <option style="font-family:Comic Sans MS" value="Comic Sans MS">Comic Sans MS</option>
+                    <option style="font-family:Courier New" value="Courier New">Courier New</option>
+                    <option style="font-family:Impact" value="Impact">Impact</option>
+                    <option style="font-family:Georgia" value="Georgia">Georgia</option>
+                    <option style="font-family:Garamond" value="Garamond">Garamond</option>
+                    <option style="font-family:Lato" value="Lato">Lato</option>
+                    <option style="font-family:Open Sans" value="Open Sans">Open Sans</option>
+                    <option style="font-family:Palatino" value="Palatino">Palatino</option>
+                    <option style="font-family:Verdana" value="Verdana">Verdana</option>
+                </select>
+
+                <!-- bold, italic and underlined -->
+
+                <div class="menu-icon-item material-icons font-style" data-type="bold">format_bold</div>
+                <div class="menu-icon-item material-icons font-style" data-type="italic">format_italic</div>
+                <div class="menu-icon-item material-icons font-style" data-type="underlined">format_underlined</div>
+
+                <!-- color fill and text color -->
+
+                <div class="menu-icon-item material-icons color-picker" data-type="fill">format_color_fill</div>
+                <div class="menu-icon-item material-icons color-picker" data-type="color-text">format_color_text</div>
+
+                <!-- alignments -->
+
+                <div class="menu-icon-item material-icons selected-align alignment" data-type="left">format_align_left
+                </div>
+                <div class="menu-icon-item material-icons alignment" data-type="center">format_align_center</div>
+                <div class="menu-icon-item material-icons  alignment" data-type="right">format_align_right</div>
+            </div>
+        </div>
+        <!-- formula bar -->
+        <div class="formula-bar">
+            <div class="formula-bar-item cell-address" contenteditable="true"></div>
+            <div class="formula-bar-item formula-sign">fx</div>
+            <div class="formula-bar-item formula-tab" contenteditable="true"></div>
+        </div>
+        <!-- data container -->
+        <div class="data-container">
+            <div class="select-all-cell"></div>
+            <div class="cols">
+                <!-- cols 26 -->
+            </div>
+            <div class="rows">
+                <!-- rows 100 -->
+            </div>
+            <div class="cells"></div>
+        </div>
+        <!-- sheet bar -->
+
+        <div class="sheet-bar">
+            <div class="sheet-scroller">
+                <div class="material-icons  scroller left-scroller">arrow_left</div>
+                <div class="material-icons  scroller right-scroller">arrow_right</div>
+            </div>
+            <div class="material-icons add-sheet">add_circle</div>
+            <div class="sheet-tab-container">
+                <div class="sheet-tab sheet-selected">Sheet1</div>
+            </div>
+        </div>
+        <!-- sheet modal -->
+
+        <div class="sheet-modal">
+            <span class="rename">Rename</span>
+            <span class="delete">Delete</span>
+        </div>
+
+        <!-- delete and rename modals -->
+        <div class="delete-rename-modal">
+            <div class="delete-modal">
+                <div class="delete-modal-content">
+                    <p>Are You sure ?</p>
+                    <div class="ctas">
+                        <div class="cancel-btn">Cancel</div>
+                        <div class="ok-btn">Delete</div>
+                    </div>
+                </div>
+            </div>
+            <div class="rename-modal">
+                <div class="rename-modal-content">
+                    <p>Enter new name</p>
+                    <input type="text" placeholder="new file name">
+                    <div class="ctas">
+                        <div class="cancel-btn">Cancel</div>
+                        <div class="ok-btn">Rename</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- save changes modal -->
+
+            <div class="save-changes-modal">
+                <p>Save Changes ?</p>
+                <div class="ctas">
+                    <div class="cancel-btn">Cancel</div>
+                    <div class="ok-btn">Save</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- file modal -->
+
+        <div class="file-modal">
+            <div class="file-content">
+                <div class="left-section">
+                    <ul>
+                        <li class="file-options" type="close">
+                            <span class="material-icons">arrow_back</span>
+                            <span>Close</span>
+                        </li>
+                        <li class="file-options" type="home">
+                            <span class="material-icons">chalet</span>
+                            <span>Home</span>
+                        </li>
+                        <li class="file-options" type="new">
+                            <span class="material-icons">open_in_full</span>
+                            <span>New</span>
+                        </li>
+                        <li class="file-options" type="open">
+                            <span class="material-icons">article</span>
+                            <span>Open</span>
+                        </li>
+                        <li class="file-options" type="save">
+                            <span class="material-icons">save</span>
+                            <span>Save</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="right-section">
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let data = {};
+        let selectedSheet = 'Sheet1';
+        data[selectedSheet] = {};
+        let totalSheets = 1;
+        let lastSheet = 1;
+        let changesMade = false;
+        let defaultProperties = {
+            'fontFamily': 'Noto Sans',
+            'fontSize': '14',
+            'text': '',
+            'bold': false,
+            'italic': false,
+            'underlined': false,
+            'alignment': 'left',
+            'color': 'black',
+            'backgroundColor': '#000000',
+            'formula': '',
+            'upStream': [],
+            'downStream': []
+        };
+    </script>
+
+    <script type="module" src="./scripts/getRC.js"></script>
+    <script type="module" src="./scripts/selectScroll.js"></script>
+    <script type="module" src="./scripts/properties.js"></script>
+    <script type="module" src="./scripts/sheets.js"></script>
+    <script type="module" src="./scripts/cutCopyPaste.js"></script>
+    <script type="module" src="./scripts/formula.js"></script>
+
+</body>
+
+</html>
